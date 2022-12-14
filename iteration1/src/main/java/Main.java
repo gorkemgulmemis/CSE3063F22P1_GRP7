@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) throws ParseException, IOException {
 
         for (int year = 1; year <5; year++) {
-            for (int i = 0; i < 70; i++) {
+            for (int i = 0; i < 100; i++) {
 
                 Student.createStudent(year,i);
             }
