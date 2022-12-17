@@ -88,7 +88,7 @@ public class Course  {
     public ArrayList<Course> takeElectiveCoursesFromInputFile() throws IOException, ParseException {
 
         JSONParser jsonparser = new JSONParser();
-        FileReader reader = new FileReader("C:\\Users\\90554\\eclipse-workspace\\Projemiz\\input.json");
+        FileReader reader = new FileReader("C:\\Users\\DELL\\IdeaProjects\\input.json");
         Object object = jsonparser.parse(reader);
         JSONObject coursejsonobject = (JSONObject)object;
 
