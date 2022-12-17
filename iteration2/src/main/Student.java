@@ -123,5 +123,26 @@ public class Student extends Person {
                 
             default : {return "error occured";}
         }
+            
+     public void createStudent() throws ParseException {
+
+        for (int year = 1; year < 5; year++) {
+            for (int i = 0; i < 100; i++) {
+
+                Student student = new Student();
+
+                student.setName(student.generateRandomName());
+                student.setYear(year);
+                student.setStudentNumber(student.generateStudentNumber(year,i));
+                student.setSemester(year);
+                student.setTitle(student.giveTitleToStudent(year));
+                student.setDepartment("CSE");
+                student.studentArrayList.add(student);
+                StudentProcess studentProcess = new StudentProcess(student);
+                studentProcess.createStudentJsonFile();
+            }
+        }
+        
+    }
         
     }
