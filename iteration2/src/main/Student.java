@@ -93,3 +93,20 @@ public class Student extends Person {
 
         return Integer.parseInt(studentNum);
     }
+        public int generateStudentSemester(int year) {
+
+        int number =0;
+        if(year==1) {
+            number=1;
+        }
+        else if(year==2) {
+            number=3;
+        }
+        else if(year==3) {
+            number=5;
+        }
+        else if(year==4) {
+            number=7;
+        }
+        return number;
+    }
