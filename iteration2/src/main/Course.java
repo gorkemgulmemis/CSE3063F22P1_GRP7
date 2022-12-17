@@ -64,3 +64,24 @@ public class Course  {
     public void setLastSemesterCourseList(ArrayList<Course> lastSemesterCourseList) {
         this.lastSemesterCourseList = lastSemesterCourseList;
     }
+
+    public ArrayList<Course> takeCoursesFromInputFile(int semester) throws IOException, ParseException {
+
+        JSONParser jsonparser = new JSONParser();
+        FileReader reader = new FileReader("C:\\Users\\90554\\eclipse-workspace\\Projemiz\\input.json");
+        Object object = jsonparser.parse(reader);
+        JSONObject coursejsonobject = (JSONObject)object;
+        for(int i = 1; i < semester; i++ ) {
+            JSONArray array = (JSONArray)coursejsonobject.get("Semester" + i);
+            for(int j = 0; j < array.size(); j++) {
+                JSONObject object2 = (JSONObject) array.get(j);
+                String courseName = (String) object2.get("courseName");
+                String courseCredit = (String) object2.get("courseCredit").toString();
+                int courseCreditIntegerState = Integer.parseInt(courseCredit);
+                Course courseObject = new Course(courseName,courseCreditIntegerState);
+                courseList.add(courseObject);
+
+            }
+        }
+        return courseList;
+    }
