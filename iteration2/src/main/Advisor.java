@@ -45,3 +45,12 @@ public class Advisor extends Person {
         }
         return AdvisorArrayList;
     }
+    public String randomAdvisorAssignment() {
+
+        Random random = new Random();
+        int AdvisorNo = random.nextInt((8));
+        String AdvisorInfo = getAdvisorList().get(AdvisorNo).getTitle() + " " + getAdvisorList().get(AdvisorNo).getName() + " " + getAdvisorList().get(AdvisorNo).getDepartment();
+        setName(getAdvisorList().get(AdvisorNo).getName());
+        setTitle(getAdvisorList().get(AdvisorNo).getTitle());
+        return AdvisorInfo;
+    }
