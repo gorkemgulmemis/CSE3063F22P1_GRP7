@@ -114,3 +114,28 @@ public class Course  {
             electiveCourseList.add(electiveUECourseObject);
 
         }
+        JSONArray array2 = (JSONArray)coursejsonobject.get("TE");
+        for(int j = 0; j < array2.size(); j++) {
+            JSONObject object2 = (JSONObject) array.get(j);
+            String courseName = (String) object2.get("courseName");
+            String courseCredit = (String) object2.get("courseCredit").toString();
+            int electiveCourseCreditIntegerState = Integer.parseInt(courseCredit);
+            Course electiveTECourseObject = new Course(courseName,electiveCourseCreditIntegerState);
+            electiveCourseList.add(electiveTECourseObject);
+
+        }
+
+        JSONArray array3 = (JSONArray)coursejsonobject.get("ENG-FTE");
+        for(int j = 0; j < array3.size(); j++) {
+            JSONObject object2 = (JSONObject) array.get(j);
+            String courseName = (String) object2.get("courseName");
+            String courseCredit = (String) object2.get("courseCredit").toString();
+            int electiveCourseCreditIntegerState = Integer.parseInt(courseCredit);
+            Course electiveFTECourseObject = new Course(courseName,electiveCourseCreditIntegerState);
+            electiveCourseList.add(electiveFTECourseObject);
+
+        }
+
+        return electiveCourseList;
+    }
+}
