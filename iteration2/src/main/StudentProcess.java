@@ -27,7 +27,7 @@ public class StudentProcess {
     }
     public void createStudentJsonFile() throws ParseException{
 
-		String path = "C:\\Users\\90554\\eclipse-workspace\\Projemiz\\Student\\" + student.getStudentNumber() + ".json";
+		String path = "C:\\Users\\mervan\\desktop\\Student\\" + student.getStudentNumber() + ".json";
 		course = new Course();
 		advisor = new Advisor();
 		transcript = new Transcript();
