@@ -44,3 +44,26 @@ public class Transcript {
         }
         return 0;
     }
+    public void printStudentInfoOnConsole(Student student, Advisor advisor, Course course, double gano, double yano) {
+    	
+    	System.out.println("----- Students are created! -----");
+    	System.out.println("For Example: ");
+    	System.out.println();
+    	System.out.println("Student Name: " + student.getName());
+    	System.out.println("Student Number: " + student.getStudentNumber());
+    	System.out.println("Student Year: " + student.getYear());
+    	System.out.println("Student Semester: " + student.getSemester());
+    	System.out.println("Student Department: " + student.getDepartment());
+    	System.out.println("Student Title: " + student.getTitle());
+    	System.out.println("Student Yano: " + String.format("%.2f", yano));
+    	System.out.println("Student Gano: " + String.format("%.2f", gano));
+    	System.out.println("Student Advisor Name and Title: " + advisor.getTitle() + " " + advisor.getName());
+    	System.out.println();
+    	System.out.println("Last Semester Course Names: ");
+    	
+    	for(int i = 0; i < course.getLastSemesterCourseList().size(); i++) {   		
+    		System.out.println(i+1 + " " + course.getLastSemesterCourseList().get(i).getCourseName());
+    	}
+    	  	
+    }
+}
