@@ -61,3 +61,24 @@ public class Student extends Person {
     public void setStudentArrayList(ArrayList<Student> studentArrayList) {
         this.studentArrayList = studentArrayList;
     }
+
+    public String generateRandomName() {
+
+        Random random = new Random();
+
+        String[] firstNames = {"Selim", "Kaan", "Ali", "Muzaffer", "Elif", "Berke", "Sadık", "Bekir", "Kemal",
+                "Gökçe", "Mert", "Ayşenur", "Ferhat", "Ebrar", "Görkem", "Oğuzalp", "Melikşah", "İrfancan", "Atilla", "Dilara", "Şevval",
+                "Muhammed", "Fedai", "Batuhan", "Eda", "Taylan", "Korkut", "Ömer Faruk", "Ebubekir Sıddık", "Deniz", "Meryem", "Danyal",
+                "Emre", "Nazım", "Hikmet", "Talha", "Yakup", "Zülfikar", "Ceylin", "Emircan", "Mervan", "Pekgüzel", "Büşra",
+                "İrem", "Mehlika", "Asena", "Ahsen", "Yağmur", "Enes"};
+        String[] lastNames = {"iğrek", "Mungan", "Mustan", "Koçoğlu", "Dizer", "Yıldırım", "Meydan", "Erkam",
+                "Bilge", "Albeni", "Aktemur", "Tatlı", "Dikici", "Balta", "Demirel", "Yavaş", "Aktaş",
+                "Kıl", "Zengin", "Koç", "Sabancı", "Terim", "Ülker", "Yandaş", "Yıldırım", "Tüfekci", "Karaköse",
+                "İpek", "Gülmemiş", "Bal", "Derici", "Belözoğlu", "Bayındır", "Aziz", "Kahveci", "Kadıoğlu", "Karaçay",
+                "Kamaylı"};
+
+        String fullName = firstNames[random.nextInt(firstNames.length)] + " " + lastNames[random.nextInt(lastNames.length)];
+
+        return fullName;
+
+    
