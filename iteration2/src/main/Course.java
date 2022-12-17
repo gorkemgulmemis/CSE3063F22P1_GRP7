@@ -138,4 +138,20 @@ public class Course  {
 
         return electiveCourseList;
     }
+    public ArrayList<Course> takeLastSemesterCourseFromInputFile(int semester) throws IOException, ParseException {
+        JSONParser jsonparser1 = new JSONParser();
+        FileReader reader1 = new FileReader("C:\\Users\\90554\\eclipse-workspace\\Projemiz\\input.json");
+        Object object1 = jsonparser1.parse(reader1);
+        JSONObject empjsonobj1 = (JSONObject)object1;
+        JSONArray array1 = (JSONArray)empjsonobj1.get("Semester" + semester);
+        for(int j = 0; j < array1.size(); j++) {
+            JSONObject object3 = (JSONObject) array1.get(j);
+            String lastSemesterCourseName = (String) object3.get("courseName");
+            int lastSemesterCredit = Integer.parseInt((String) object3.get("courseCredit").toString());
+            setCourseCredit(lastSemesterCredit);
+            Course lastSemesterCourseObject = new Course(lastSemesterCourseName,lastSemesterCredit);
+            lastSemesterCourseList.add(lastSemesterCourseObject);
+        }
+        return lastSemesterCourseList;
+    }
 }
