@@ -110,3 +110,16 @@ public class Student extends Person {
         }
         return number;
     }
+
+        public String giveTitleToStudent(int year){
+        switch (year){
+            case 1 : {return "Freshman";}
+
+            case 2 : {return "Sophomore";}
+
+            case 3 : {return "Junior";}
+
+            case 4 : {return "Senior";}
+        }
+        return "a";
+    }
