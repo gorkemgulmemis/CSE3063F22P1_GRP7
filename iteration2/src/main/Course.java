@@ -85,3 +85,32 @@ public class Course  {
         }
         return courseList;
     }
+    public ArrayList<Course> takeElectiveCoursesFromInputFile() throws IOException, ParseException {
+
+        JSONParser jsonparser = new JSONParser();
+        FileReader reader = new FileReader("C:\\Users\\90554\\eclipse-workspace\\Projemiz\\input.json");
+        Object object = jsonparser.parse(reader);
+        JSONObject coursejsonobject = (JSONObject)object;
+
+
+        JSONArray array = (JSONArray)coursejsonobject.get("NTE");
+        for(int j = 0; j < array.size(); j++) {
+            JSONObject object2 = (JSONObject) array.get(j);
+            String courseName = (String) object2.get("courseName");
+            String courseCredit = (String) object2.get("courseCredit").toString();
+            int electiveCourseCreditIntegerState = Integer.parseInt(courseCredit);
+            Course electiveNTECourseObject = new Course(courseName,electiveCourseCreditIntegerState);
+            electiveCourseList.add(electiveNTECourseObject);
+
+        }
+
+        JSONArray array1 = (JSONArray)coursejsonobject.get("ENG-UE");
+        for(int j = 0; j < array1.size(); j++) {
+            JSONObject object2 = (JSONObject) array.get(j);
+            String courseName = (String) object2.get("courseName");
+            String courseCredit = (String) object2.get("courseCredit").toString();
+            int electiveCourseCreditIntegerState = Integer.parseInt(courseCredit);
+            Course electiveUECourseObject = new Course(courseName,electiveCourseCreditIntegerState);
+            electiveCourseList.add(electiveUECourseObject);
+
+        }
