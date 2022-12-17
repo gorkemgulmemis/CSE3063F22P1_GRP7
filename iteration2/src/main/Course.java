@@ -68,7 +68,7 @@ public class Course  {
     public ArrayList<Course> takeCoursesFromInputFile(int semester) throws IOException, ParseException {
 
         JSONParser jsonparser = new JSONParser();
-        FileReader reader = new FileReader("C:\\Users\\90554\\eclipse-workspace\\Projemiz\\input.json");
+        FileReader reader = new FileReader("C:\\Users\\Oğuzalp\\Desktop\\input.json");
         Object object = jsonparser.parse(reader);
         JSONObject coursejsonobject = (JSONObject)object;
         for(int i = 1; i < semester; i++ ) {
@@ -140,7 +140,7 @@ public class Course  {
     }
     public ArrayList<Course> takeLastSemesterCourseFromInputFile(int semester) throws IOException, ParseException {
         JSONParser jsonparser1 = new JSONParser();
-        FileReader reader1 = new FileReader("C:\\Users\\90554\\eclipse-workspace\\Projemiz\\input.json");
+        FileReader reader1 = new FileReader("C:\\Users\\Oğuzalp\\Desktop\\input.json");
         Object object1 = jsonparser1.parse(reader1);
         JSONObject empjsonobj1 = (JSONObject)object1;
         JSONArray array1 = (JSONArray)empjsonobj1.get("Semester" + semester);
