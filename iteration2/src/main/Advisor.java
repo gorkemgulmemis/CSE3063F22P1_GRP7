@@ -27,3 +27,21 @@ public class Advisor extends Person {
     public void setAdvisorList(ArrayList<Advisor> AdvisorList) {
         AdvisorArrayList = AdvisorList;
     }
+    
+    public ArrayList<Advisor> takeAdvisorFromInputFile() throws IOException, ParseException {
+
+        JSONParser jsonparser = new JSONParser();
+        FileReader reader = new FileReader("C:\\Users\\90554\\eclipse-workspace\\Projemiz\\input.json");
+        Object obj = jsonparser.parse(reader);
+        JSONObject empjsonobj = (JSONObject)obj;
+        JSONArray advisorArray = (JSONArray)empjsonobj.get("advisors");
+        for(int j = 0; j < advisorArray.size(); j++) {
+            JSONObject Advisors = (JSONObject) advisorArray.get(j);
+            String AdvisorName = (String) Advisors.get("advisorName");
+            String department = (String) Advisors.get("department");
+            String title = (String) Advisors.get("rank");
+            Advisor AdvisorObj = new Advisor(AdvisorName,department,title);
+            AdvisorArrayList.add(AdvisorObj);
+        }
+        return AdvisorArrayList;
+    }
