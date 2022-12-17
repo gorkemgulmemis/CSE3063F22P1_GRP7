@@ -57,3 +57,67 @@ public class StudentProcess {
            	        semesterTotalGrade += course.getLastSemesterCourseList().get(i).getCourseCredit() * transcript.gradeChangeToDouble(transcript.getLetterGrade());
 				}
 			}
+			
+			int totalCredit = 0;
+			int semesterTotalCredit = 0;
+			for(int i = 0; i < course.getCourseList().size(); i++) {
+				totalCredit += course.getCourseList().get(i).getCourseCredit();
+			}
+			for(int i = 0; i < course.getLastSemesterCourseList().size(); i++) {
+				semesterTotalCredit += course.getLastSemesterCourseList().get(i).getCourseCredit();
+			}
+
+			json.put("Total Credit " , totalCredit);
+
+			double Gano = totalGrade / totalCredit;
+			double Yano = semesterTotalGrade / semesterTotalCredit;
+			
+			json.put("GANO " , String.format("%.2f", Gano));
+			json.put("YANO " , String.format("%.2f", Yano));
+
+			Random random = new Random();
+			course.takeElectiveCoursesFromInputFile();
+
+			for(int i = 2; i <= student.getSemester(); i++) {
+				switch(i) {
+					case 2 : {
+						json.put("Elective Course " + (i-1) ,course.getElectiveCourseList().get(random.nextInt(8)).getCourseName());
+						break;
+					}
+					case 3 : {
+						json.put("Elective Course " + (i-1) ,course.getElectiveCourseList().get(random.nextInt(8)).getCourseName());
+						break;
+					}
+					case 7 : {
+						json.put("Elective Course " + (i-4) ,course.getElectiveCourseList().get(random.nextInt(8)+8).getCourseName());
+						json.put("Elective Course " + (i-3) ,course.getElectiveCourseList().get(random.nextInt(8)+16).getCourseName());
+						json.put("Elective Course " + (i-2) ,course.getElectiveCourseList().get(random.nextInt(8)+16).getCourseName());
+						break;
+					}
+				}
+			}
+
+			advisor.takeAdvisorFromInputFile();
+			json.put("Advisor Info ", advisor.randomAdvisorAssignment());
+			
+				
+			if(student.getStudentArrayList().get(0).getStudentNumber() == 150120001)
+				transcript.printStudentInfoOnConsole(student, advisor, course, Gano, Yano);
+			
+
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+		try {
+			FileWriter out = new FileWriter(path);
+			String str = json.toString();
+			out.write(str);
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
