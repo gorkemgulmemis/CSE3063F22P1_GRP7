@@ -54,3 +54,4 @@ public class Advisor extends Person {
         setTitle(getAdvisorList().get(AdvisorNo).getTitle());
         return AdvisorInfo;
     }
+}
