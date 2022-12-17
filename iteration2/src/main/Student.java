@@ -81,4 +81,15 @@ public class Student extends Person {
 
         return fullName;
 
-    
+    public int generateStudentNumber(int year, int count) {
+
+        String numberStart = Integer.toString(150123-year);
+        numberStart += "0";
+        String studentNum = "";
+        if (count<10)
+            studentNum = numberStart + "0"+ Integer.toString(count + 1);
+        else
+            studentNum = numberStart + Integer.toString(count + 1);
+
+        return Integer.parseInt(studentNum);
+    }
