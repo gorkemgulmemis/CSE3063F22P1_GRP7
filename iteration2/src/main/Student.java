@@ -120,6 +120,8 @@ public class Student extends Person {
             case 3 : {return "Junior";}
 
             case 4 : {return "Senior";}
+                
+            default : {return "error occured";}
         }
-        return "a";
+        
     }
