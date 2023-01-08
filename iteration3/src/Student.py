@@ -69,7 +69,17 @@ class Student(Person):
 
         return fullName  
         
-        logging.basicConfig(filename='student.log',level=logging.INFO)
+    def generateStudentNumber(self, year, count):
+        numberStart = str(150123 - year)
+        numberStart += "0"
+        if count < 10:
+            studentNum = numberStart + "0" + str(count + 1)
+        else:
+            studentNum = numberStart + str(count + 1)
+
+        return int(studentNum)
+    
+logging.basicConfig(filename='student.log',level=logging.INFO)
 
     def generateStudentSemester(self, year):
             logger = logging.getLogger(_name_)
