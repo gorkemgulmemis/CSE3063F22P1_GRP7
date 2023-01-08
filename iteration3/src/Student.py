@@ -75,3 +75,20 @@ print(student.generateStudentSemester(2))  # Output is gonna be 3.
 print(student.generateStudentSemester(3))  # Output is gonna be 5.
 print(student.generateStudentSemester(4))  # Output is gonna be 7.
 print(student.generateStudentSemester(5))  # Output is gonna be None.
+
+
+   def createStudent(self):
+        # Read a config
+        config = ConfigParser()
+        config.read("config.ini")
+        studentNumber = config["StudentNumber"]
+        for year in range(1, 4):
+            for i in range(int(studentNumber['studentnumber'])):
+                self.setName(self.generateRandomName())
+                self.setStudentNumber(self.generateStudentNumber(year, i))
+                self.setSemester(self.generateStudentSemester(year))
+                self.setYear(year)
+                self.setTitle(self.giveTitleToStudent(year))
+                self.setDepartment("CSE")
+                self.__addStudentList(self)
+                StudentProcess(self).createStudentJsonFile()
