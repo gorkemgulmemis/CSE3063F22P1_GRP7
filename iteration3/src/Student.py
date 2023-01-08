@@ -52,23 +52,23 @@ class Student(Person):
         
         logging.basicConfig(filename='student.log',level=logging.INFO)
 
-def generateStudentSemester(self, year):
-        logger = logging.getLogger(_name_)
-        if year == 1:
-            logger.debug("Student is in the 1st year and 1st semester")
-            return 1
-        elif year == 2:
-            logger.debug("Student is in the 2nd year and 3rd semester")
-            return 3
-        elif year == 3:
-            logger.debug("Student is in the 3rd year and 5th semester")
-            return 5
-        elif year == 4:
-            logger.debug("Student is in the 4th year and 7th semester")
-            return 7
-        else:
-            logger.warning("Year entered is invalid")
-            return None
+    def generateStudentSemester(self, year):
+            logger = logging.getLogger(_name_)
+            if year == 1:
+                logger.debug("Student is in the 1st year and 1st semester")
+                return 1
+            elif year == 2:
+                logger.debug("Student is in the 2nd year and 3rd semester")
+                return 3
+            elif year == 3:
+                logger.debug("Student is in the 3rd year and 5th semester")
+                return 5
+            elif year == 4:
+                logger.debug("Student is in the 4th year and 7th semester")
+                return 7
+            else:
+                logger.warning("Year entered is invalid")
+                return None
 
 print(student.generateStudentSemester(1))  # Output is gonna be 1.
 print(student.generateStudentSemester(2))  # Output is gonna be 3.
