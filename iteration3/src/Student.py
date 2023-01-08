@@ -99,12 +99,23 @@ logging.basicConfig(filename='student.log',level=logging.INFO)
                 logger.warning("Year entered is invalid")
                 return None
 
-print(student.generateStudentSemester(1))  # Output is gonna be 1.
-print(student.generateStudentSemester(2))  # Output is gonna be 3.
-print(student.generateStudentSemester(3))  # Output is gonna be 5.
-print(student.generateStudentSemester(4))  # Output is gonna be 7.
-print(student.generateStudentSemester(5))  # Output is gonna be None.
+print(self.generateStudentSemester(1))  # Output is gonna be 1.
+print(self.generateStudentSemester(2))  # Output is gonna be 3.
+print(self.generateStudentSemester(3))  # Output is gonna be 5.
+print(self.generateStudentSemester(4))  # Output is gonna be 7.
+print(self.generateStudentSemester(5))  # Output is gonna be None.
 
+   def giveTitleToStudent(self, year):
+       if year == 1:
+           return "Freshman"
+       elif year == 2:
+           return "Sophomore"
+       elif year == 3:
+           return "Junior"
+       elif year == 4:
+           return "Senior"
+       else:
+           return "error occurred"
 
    def createStudent(self):
         # Read a config
