@@ -49,6 +49,25 @@ class Student(Person):
     def setStudentList(self, studentList):
         self.__studentList = studentList
         
+    def generateRandomName(self):
+        firstNames = ["Selim", "Kaan", "Ali", "Muzaffer", "Elif", "Berke", "Sadık", "Bekir", "Kemal",
+                      "Gökçe", "Mert", "Ayşenur", "Ferhat", "Ebrar", "Görkem", "Oğuzalp", "Melikşah", "İrfancan",
+                      "Atilla", "Dilara", "Şevval",
+                      "Muhammed", "Fedai", "Batuhan", "Eda", "Taylan", "Korkut", "Ömer Faruk", "Ebubekir Sıddık",
+                      "Deniz", "Meryem", "Danyal",
+                      "Emre", " Nazım", "Hikmet", "Talha", "Yakup", "Zülfikar", "Ceylin", "Emircan", "Mervan",
+                      "Pekgüzel", "Büşra",
+                      "İrem", "Mehlika", "Asena", "Ahsen", "Yağmur", "Enes"]
+        lastNames = ["iğrek", "Mungan", "Mustan", "Koçoğlu", "Dizer", "Yıldırım", "Meydan", "Erkam",
+                     "Bilge", "Albeni", "Aktemur", "Tatlı", "Dikici", "Balta", "Demirel", "Yavaş", "Aktaş",
+                     "Kıl", "Zengin", "Koç", "Sabancı", "Terim", "Ülker", "Yandaş", "Yıldırım", "Tüfekci", "Karaköse",
+                     "İpek", "Gülmemiş", "Bal", "Derici", "Belözoğlu", "Bayındır", "Aziz", "Kahveci", "Kadıoğlu",
+                     "Karaçay",
+                     "Kamaylı"]
+
+        fullName = random.choice(firstNames) + " " + random.choice(lastNames)
+
+        return fullName  
         
         logging.basicConfig(filename='student.log',level=logging.INFO)
 
