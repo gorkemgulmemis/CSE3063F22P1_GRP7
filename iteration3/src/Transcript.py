@@ -1,4 +1,21 @@
+import random
 
+class Transcript:
+
+    def _init_(self, letterGrade = None):
+        self.__letterGrade = letterGrade
+
+    def getLetterGrade(self):
+        return self.letterGrade
+
+    def setLetterGrade(self, letterGrade):
+        self.letterGrade = letterGrade
+
+    def generateRandomLetterGrade(self):
+        grades = ["AA", "BA", "BB", "CB", "CC", "DC", "DD", "FD", "FF"]
+        letterGrade = random.choice(grades)
+        self.setLetterGrade(letterGrade)
+        
     def gradeChangeToDouble(self, grade):
         if grade == "AA":
             return 4
