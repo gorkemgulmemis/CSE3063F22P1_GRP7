@@ -49,6 +49,18 @@ class Course:
     def setLastSemesterCourseList(self, lastSemesterCourseList):
         self.__lastSemesterCourseList = lastSemesterCourseList
         
+        
+    def takeCoursesFromInputFile(self, semester):
+        with open("C:\\Users\\90554\\PycharmProjects\\OOPProject\\input.json") as file:
+            data = json.load(file)
+            for i in range(1, semester + 1):
+                array = data["Semester" + str(i)]
+                for j in range(0, len(array)):
+                    obj = array[j]
+                    self.setCourseName(obj["courseName"])
+                    self.setCourseCredit(obj["courseCredit"])
+                    self.__addCourseList(self)    
+        
     def takeElectiveCoursesFromInputFile(self):
         with open("C:\\Users\\90554\\PycharmProjects\\OOPProject\\input.json") as file:
             data = json.load(file)
