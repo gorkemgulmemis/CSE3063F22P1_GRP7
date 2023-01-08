@@ -73,3 +73,18 @@ class Course:
                     self.setCourseName(courseName)
                     self.setCourseCredit(courseCredit)
                     self.__addElectiveCourseList(self)
+                    
+        def takeLastSemesterCourseFromInputFile(self, semester):
+        with open("C:\\Users\\mervan\\Desktop\\input.json") as file:
+            data = json.load(file)
+            for i in data["Semester" + str(semester)]:
+                array = data["Semester" + str(semester)]
+            for j in range(len(array)):
+                obj = array[j]
+                courseName = obj["courseName"]
+                courseCredit = obj["courseCredit"]
+                self.setCourseName(courseName)
+                self.setCourseCredit(courseCredit)
+                self.__addLastSemesterCourseList(self)
+   
+
