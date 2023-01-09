@@ -9,7 +9,7 @@ from configparser import ConfigParser
 
 class Student(Person):
 
-    def __init__(self, year = None, studentNumber = None, semester = None):
+    def _init_(self, year=None, studentNumber=None, semester=None):
         self.__studentNumber = studentNumber
         self.__year = year
         self.__semester = semester
@@ -30,7 +30,6 @@ class Student(Person):
             raise ValueError("Semester can't be both less than 1 and more than 8.")
         self.__semester = semester
 
-
     def getYear(self):
         return self.__year
 
@@ -48,9 +47,10 @@ class Student(Person):
 
     def setStudentList(self, studentList):
         self.__studentList = studentList
-        
+
     def generateRandomName(self):
-        firstNames = ["Selim", "Kaan", "Ali", "Muzaffer", "Elif", "Berke", "Sadık", "Bekir", "Kemal",
+        try : 
+            firstNames = ["Selim", "Kaan", "Ali", "Muzaffer", "Elif", "Berke", "Sadık", "Bekir", "Kemal",
                       "Gökçe", "Mert", "Ayşenur", "Ferhat", "Ebrar", "Görkem", "Oğuzalp", "Melikşah", "İrfancan",
                       "Atilla", "Dilara", "Şevval",
                       "Muhammed", "Fedai", "Batuhan", "Eda", "Taylan", "Korkut", "Ömer Faruk", "Ebubekir Sıddık",
@@ -58,30 +58,38 @@ class Student(Person):
                       "Emre", " Nazım", "Hikmet", "Talha", "Yakup", "Zülfikar", "Ceylin", "Emircan", "Mervan",
                       "Pekgüzel", "Büşra",
                       "İrem", "Mehlika", "Asena", "Ahsen", "Yağmur", "Enes"]
-        lastNames = ["iğrek", "Mungan", "Mustan", "Koçoğlu", "Dizer", "Yıldırım", "Meydan", "Erkam",
+            lastNames = ["iğrek", "Mungan", "Mustan", "Koçoğlu", "Dizer", "Yıldırım", "Meydan", "Erkam",
                      "Bilge", "Albeni", "Aktemur", "Tatlı", "Dikici", "Balta", "Demirel", "Yavaş", "Aktaş",
                      "Kıl", "Zengin", "Koç", "Sabancı", "Terim", "Ülker", "Yandaş", "Yıldırım", "Tüfekci", "Karaköse",
                      "İpek", "Gülmemiş", "Bal", "Derici", "Belözoğlu", "Bayındır", "Aziz", "Kahveci", "Kadıoğlu",
                      "Karaçay",
                      "Kamaylı"]
 
-        fullName = random.choice(firstNames) + " " + random.choice(lastNames)
+            fullName = random.choice(firstNames) + " " + random.choice(lastNames)
 
-        return fullName  
-        
+            return fullName
+        except Exception as error : 
+            print('Error occurred with generateRandomFile : ' , str(error))
+
     def generateStudentNumber(self, year, count):
-        numberStart = str(150123 - year)
-        numberStart += "0"
-        if count < 10:
-            studentNum = numberStart + "0" + str(count + 1)
-        else:
-            studentNum = numberStart + str(count + 1)
+        try : 
+            numberStart = str(150123 - year)
+            numberStart += "0"
+            if count < 10:
+                studentNum = numberStart + "0" + str(count + 1)
+            else:
+                studentNum = numberStart + str(count + 1)
 
-        return int(studentNum)
-    
-logging.basicConfig(filename='student.log',level=logging.INFO)
+            return int(studentNum)
+        except Exception as error : 
+            print('Error occurred with generateStudentNumber : ' , str(error))
+
+
+
 
     def generateStudentSemester(self, year):
+        try : 
+            logging.basicConfig(filename='student.log', level=logging.INFO)
             logger = logging.getLogger(_name_)
             if year == 1:
                 logger.debug("Student is in the 1st year and 1st semester")
@@ -98,37 +106,48 @@ logging.basicConfig(filename='student.log',level=logging.INFO)
             else:
                 logger.warning("Year entered is invalid")
                 return None
+        except Exception as error : 
+            print('Error occurred with generateStudentSemester : ' , str(error))
 
-print(self.generateStudentSemester(1))  # Output is gonna be 1.
-print(self.generateStudentSemester(2))  # Output is gonna be 3.
-print(self.generateStudentSemester(3))  # Output is gonna be 5.
-print(self.generateStudentSemester(4))  # Output is gonna be 7.
-print(self.generateStudentSemester(5))  # Output is gonna be None.
+    def printLogs(self):
+        try : 
+            print(self.generateStudentSemester(1))  # Output is gonna be 1.
+            print(self.generateStudentSemester(2))  # Output is gonna be 3.
+            print(self.generateStudentSemester(3))  # Output is gonna be 5.
+            print(self.generateStudentSemester(4))  # Output is gonna be 7.
+            print(self.generateStudentSemester(5))  # Output is gonna be None.
+        except Exception as error : 
+            print('Error occurred with printLogs : ' , str(error))
 
-   def giveTitleToStudent(self, year):
-       if year == 1:
-           return "Freshman"
-       elif year == 2:
-           return "Sophomore"
-       elif year == 3:
-           return "Junior"
-       elif year == 4:
-           return "Senior"
-       else:
-           return "error occurred"
 
-   def createStudent(self):
-        # Read a config
-        config = ConfigParser()
-        config.read("config.ini")
-        studentNumber = config["StudentNumber"]
-        for year in range(1, 4):
-            for i in range(int(studentNumber['studentnumber'])):
-                self.setName(self.generateRandomName())
-                self.setStudentNumber(self.generateStudentNumber(year, i))
-                self.setSemester(self.generateStudentSemester(year))
-                self.setYear(year)
-                self.setTitle(self.giveTitleToStudent(year))
-                self.setDepartment("CSE")
-                self.__addStudentList(self)
-                StudentProcess(self).createStudentJsonFile()
+    def giveTitleToStudent(self, year):
+        if year == 1:
+            return "Freshman"
+        elif year == 2:
+            return "Sophomore"
+        elif year == 3:
+            return "Junior"
+        elif year == 4:
+            return "Senior"
+        else:
+            return "error occurred"
+
+
+    def createStudent(self):
+        try : 
+            # Read a config
+            config = ConfigParser()
+            config.read("config.ini")
+            studentNumber = config["StudentNumber"]
+            for year in range(1, 4):
+                for i in range(int(studentNumber['studentnumber'])):
+                    self.setName(self.generateRandomName())
+                    self.setStudentNumber(self.generateStudentNumber(year, i))
+                    self.setSemester(self.generateStudentSemester(year))
+                    self.setYear(year)
+                    self.setTitle(self.giveTitleToStudent(year))
+                    self.setDepartment("CSE")
+                    self.__addStudentList(self)
+                    StudentProcess(self).createStudentJsonFile()
+        except Exception as error : 
+            print('Error occurred with createStudent : ' , str(error))
